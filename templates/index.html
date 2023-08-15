@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
+</style>
+{% block content %}
+<br>
+<h2 style="font-family:'Lobster', cursive; color:navy; font-size: xxx-large; text-align: center;">
+    Films</h2>
+<br>
+{% for film in films %}
+
+<a href="{{ url_for('film', film_id=film['id']) }}">
+    <h3 style="font-family: 'Playfair Display', serif; text-align: center;">{{ film['title'] }}</h3>
+</a>
+<ul class="d-flex justify-content-center ">
+    <span class="badge badge-info mr-1">{{ film['yearReleased'] }}</span>
+    <span class="badge badge-info mr-1">{{ film['rating'] }}</span>
+    <span class="badge badge-info mr-1">{{ film['duration'] }}</span>
+    <span class="badge badge-info mr-1">{{ film['genre'] }}</span>
+    <a href="{{ url_for('edit', id=film['id']) }}">
+        <span class="badge badge-warning">Edit</span>
+    </a>
+</ul>
+<hr>
+{% endfor %}
+
+{% endblock %}
